@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оплата прошла</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 20px;
+      background: #07140e;
+      color: #e7fff3;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #0a2316;
+      border: 1px solid #1b6a3b;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    }
+
+    a {
+      color: #8cffc2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Спасибо! Оплата прошла успешно ✅</h1>
+      <p>Заказ № <b>
+          <%= orderId %>
+        </b> отмечен как оплаченный.</p>
+      <p><a href="/">Вернуться в магазин</a></p>
+    </div>
+  </div>
+</body>
+
+</html>

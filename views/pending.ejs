@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Платёж в обработке</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 20px;
+      background: #10100a;
+      color: #f5f5df;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #1e1e10;
+      border: 1px solid #6b6b2a;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    }
+
+    a {
+      color: #faf38b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Платёж ещё не подтверждён ⏳</h1>
+      <p>Заказ № <b>
+          <%= orderId %>
+        </b>. Текущий статус платежа: <b>
+          <%= status %>
+        </b>.</p>
+      <p>Если вы завершили оплату, дождитесь уведомления или проверьте статус позже.</p>
+      <p><a href="/">Вернуться в магазин</a></p>
+    </div>
+  </div>
+</body>
+
+</html>

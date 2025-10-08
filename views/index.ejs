@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Демо YooKassa</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 20px;
+      background: #0b1020;
+      color: #e8ecf8;
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+    }
+
+    .muted {
+      color: #a8b0d0;
+      margin-bottom: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #111938;
+      border: 1px solid #1b2452;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    }
+
+    .title {
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    .price {
+      font-size: 18px;
+      margin: 8px 0 12px;
+    }
+
+    a.btn {
+      display: inline-block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      background: #5b8cff;
+      color: white;
+      border: 1px solid #93b2ff;
+    }
+
+    a.btn:hover {
+      filter: brightness(1.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px dashed #283260;
+    }
+
+    th {
+      color: #a8b0d0;
+      font-weight: 600;
+    }
+
+    .ok {
+      color: #79f2a1;
+      font-weight: 700;
+    }
+
+    .fail {
+      color: #ff7a7a;
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Демо YooKassa</h1>
+    <div class="muted">Каталог → создание платежа через YooKassa → редирект → success + вебхук</div>
+
+    <div class="grid">
+      <% products.forEach(p=> { %>
+        <div class="card">
+          <div class="title">
+            <%= p.title %>
+          </div>
+          <div class="muted">
+            <%= p.description || '' %>
+          </div>
+          <div class="price"><b>
+              <%= p.price %>
+            </b> ₽</div>
+          <a class="btn" href="/pay/<%= p.id %>">Купить</a>
+        </div>
+        <% }) %>
+    </div>
+
+    <h2 style="margin-top:28px">Заказы</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Товар</th>
+          <th>Сумма</th>
+          <th>Статус</th>
+          <th>Создан</th>
+          <th>Оплачен</th>
+          <th>paymentId</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% orders.forEach(o=> { %>
+          <tr>
+            <td>
+              <%= o.id %>
+            </td>
+            <td>
+              <%= o.productId %>
+            </td>
+            <td>
+              <%= o.amount %> ₽
+            </td>
+            <td>
+              <% if (o.status==='paid' ) { %>
+                <span class="ok">PAID</span>
+                <% } else if (o.status==='failed' ) { %>
+                  <span class="fail">FAILED</span>
+                  <% } else { %>
+                    NEW
+                    <% } %>
+            </td>
+            <td>
+              <%= o.createdAt.toLocaleString() %>
+            </td>
+            <td>
+              <%= o.paidAt ? o.paidAt.toLocaleString() : '-' %>
+            </td>
+            <td>
+              <%= o.paymentId || '-' %>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

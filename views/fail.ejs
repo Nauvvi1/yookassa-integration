@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оплата отклонена</title>
+  <style>
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;
+      margin: 0;
+      padding: 20px;
+      background: #1b0a0a;
+      color: #ffe7e7;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #2a1010;
+      border: 1px solid #7a1b1b;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .35);
+    }
+
+    a {
+      color: #ffadad;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Оплата не прошла ❌</h1>
+      <p>
+        <%= msg %>
+      </p>
+      <p><a href="/">Вернуться в магазин</a></p>
+    </div>
+  </div>
+</body>
+
+</html>
